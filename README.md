@@ -13,10 +13,13 @@ The High Fidelity Spatial Audio Client Library for Swift allows developers to in
 ## Usage in Your iOS Apps
 If you'd like to make use of the `HiFiSpatialAudio` Swift Package in your iOS apps:
 1. Open your iOS app's code in XCode.
-2. Create a `Frameworks` group inside your XCode project if one doesn't already exist.
-3. Drag the `hifi-spatial-audio-swift` directory into the `Frameworks` folder in your Project Navigator. You should end up with a Project Navigator which looks something like this:
-    
-    <img src="./usage.png" height="280" alt="A screenshot of XCode showing the `hifi-spatial-audio-swift` framework installed.">
+2. Click `File` in the top left, then click `Swift Packages`, then click `Add Package Dependency...`
+3. Under "Search or enter package repository URL", paste the following URL:
+    - https://github.com/highfidelity/hifi-spatial-audio-swift/
+4. Click `Next`, then follow XCode's instructions.
+
+## You'll Need a Developer Account
+To use the Spatial Audio API, you'll need to sign up for a High Fidelity Developer Account. Sign up for free at [account.highfidelity.com](https://account.highfidelity.com).
 
 ## Documentation
 [Click here to view documentation on the latest version of the Spatial Audio Client Library for Swift.](https://docs.highfidelity.com/swift/latest/index.html)
@@ -26,6 +29,9 @@ You can explore some of the features of the Swift client library by compiling an
 - The `HiFiSpatialAudioTest` app is the simplest, most straightforward, and closest to "production-ready".
 - The `HiFiUnionSquare` app is a complex app which uses device sensor fusion to place your avatar on a map of Union Square. Your avatar's position and orientation are driven by your phone's real-world position and orientation.
 - The **(unfinished)** `HiFiPlace` app shows your avatar and other avatars on a map.
+
+## Release Notes
+Release notes for the Spatial Audio Client Library are available on [the GitHub releases page](https://github.com/highfidelity/hifi-spatial-audio-swift/releases).
 
 ## Additional Details
 The `HiFiSpatialAudio` Swift Package is a Swift version of High Fidelity's Spatial Audio client library for TypeScript. [Click here to access documentation for the TypeScript version of our client library.](https://docs.highfidelity.com/js/latest/index.html)
