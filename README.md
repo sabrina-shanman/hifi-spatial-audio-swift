@@ -1,4 +1,4 @@
-<img src="./utilities/spatialAudioLogo.svg" alt="High Fidelity Spatial Audio" width="375"/>
+<img src="https://raw.githubusercontent.com/highfidelity/hifi-spatial-audio-swift/main/utilities/spatialAudioLogo.svg" alt="High Fidelity Spatial Audio" width="375"/>
 
 &nbsp;
 
@@ -25,7 +25,7 @@ To use the Spatial Audio API, you'll need to sign up for a High Fidelity Develop
 [Click here to view documentation on the latest version of the Spatial Audio Client Library for Swift.](https://docs.highfidelity.com/swift/latest/index.html)
 
 ## Examples
-You can explore some of the features of the Swift client library by compiling and running any of the included Test Apps in [./Test Apps](the Test Apps subdirectory of this repository). All of the sample apps run on an iPhone Simulator via XCode and on real iOS hardware.
+You can explore some of the features of the Swift client library by compiling and running any of the included Test Apps in [the Test Apps subdirectory of this repository](https://github.com/highfidelity/hifi-spatial-audio-swift/tree/main/Test%20Apps). All of the sample apps run on an iPhone Simulator via XCode and on real iOS hardware.
 - The `HiFiSpatialAudioTest` app is the simplest, most straightforward, and closest to "production-ready".
 - The `HiFiUnionSquare` app is a complex app which uses device sensor fusion to place your avatar on a map of Union Square. Your avatar's position and orientation are driven by your phone's real-world position and orientation.
 - The **(unfinished)** `HiFiPlace` app shows your avatar and other avatars on a map.
