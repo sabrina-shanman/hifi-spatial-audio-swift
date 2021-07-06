@@ -1,0 +1,398 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9214EDDD265D3B8F00F01A7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9214EDDC265D3B8F00F01A7C /* AppDelegate.swift */; };
+		9214EDDF265D3B8F00F01A7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9214EDDE265D3B8F00F01A7C /* SceneDelegate.swift */; };
+		9214EDE1265D3B8F00F01A7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9214EDE0265D3B8F00F01A7C /* ViewController.swift */; };
+		9214EDE4265D3B8F00F01A7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9214EDE2265D3B8F00F01A7C /* Main.storyboard */; };
+		9214EDE6265D3B9200F01A7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9214EDE5265D3B9200F01A7C /* Assets.xcassets */; };
+		9214EDE9265D3B9200F01A7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9214EDE7265D3B9200F01A7C /* LaunchScreen.storyboard */; };
+		9214EDF5265D43F500F01A7C /* JWTKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9214EDF4265D43F500F01A7C /* JWTKit */; };
+		9214EDFF265D4A0400F01A7C /* HiFiSpatialAudio in Frameworks */ = {isa = PBXBuildFile; productRef = 9214EDFE265D4A0400F01A7C /* HiFiSpatialAudio */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9214EDD9265D3B8F00F01A7C /* HiFi Place.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HiFi Place.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9214EDDC265D3B8F00F01A7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9214EDDE265D3B8F00F01A7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		9214EDE0265D3B8F00F01A7C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9214EDE3265D3B8F00F01A7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9214EDE5265D3B9200F01A7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9214EDE8265D3B9200F01A7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9214EDEA265D3B9200F01A7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9214EDFA265D481200F01A7C /* hifi-spatial-audio-swift */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "hifi-spatial-audio-swift"; path = ../..; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9214EDD6265D3B8F00F01A7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9214EDFF265D4A0400F01A7C /* HiFiSpatialAudio in Frameworks */,
+				9214EDF5265D43F500F01A7C /* JWTKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9214EDD0265D3B8F00F01A7C = {
+			isa = PBXGroup;
+			children = (
+				9214EDF9265D47FB00F01A7C /* Frameworks */,
+				9214EDDB265D3B8F00F01A7C /* HiFi Place */,
+				9214EDDA265D3B8F00F01A7C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9214EDDA265D3B8F00F01A7C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9214EDD9265D3B8F00F01A7C /* HiFi Place.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9214EDDB265D3B8F00F01A7C /* HiFi Place */ = {
+			isa = PBXGroup;
+			children = (
+				9214EDDC265D3B8F00F01A7C /* AppDelegate.swift */,
+				9214EDDE265D3B8F00F01A7C /* SceneDelegate.swift */,
+				9214EDE0265D3B8F00F01A7C /* ViewController.swift */,
+				9214EDE2265D3B8F00F01A7C /* Main.storyboard */,
+				9214EDE5265D3B9200F01A7C /* Assets.xcassets */,
+				9214EDE7265D3B9200F01A7C /* LaunchScreen.storyboard */,
+				9214EDEA265D3B9200F01A7C /* Info.plist */,
+			);
+			path = "HiFi Place";
+			sourceTree = "<group>";
+		};
+		9214EDF9265D47FB00F01A7C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9214EDFA265D481200F01A7C /* hifi-spatial-audio-swift */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9214EDD8265D3B8F00F01A7C /* HiFi Place */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9214EDED265D3B9200F01A7C /* Build configuration list for PBXNativeTarget "HiFi Place" */;
+			buildPhases = (
+				9214EDD5265D3B8F00F01A7C /* Sources */,
+				9214EDD6265D3B8F00F01A7C /* Frameworks */,
+				9214EDD7265D3B8F00F01A7C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HiFi Place";
+			packageProductDependencies = (
+				9214EDF4265D43F500F01A7C /* JWTKit */,
+				9214EDFE265D4A0400F01A7C /* HiFiSpatialAudio */,
+			);
+			productName = "HiFi Place";
+			productReference = 9214EDD9265D3B8F00F01A7C /* HiFi Place.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9214EDD1265D3B8F00F01A7C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					9214EDD8265D3B8F00F01A7C = {
+						CreatedOnToolsVersion = 12.5;
+					};
+				};
+			};
+			buildConfigurationList = 9214EDD4265D3B8F00F01A7C /* Build configuration list for PBXProject "HiFi Place" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9214EDD0265D3B8F00F01A7C;
+			packageReferences = (
+				9214EDF3265D43F500F01A7C /* XCRemoteSwiftPackageReference "jwt-kit" */,
+			);
+			productRefGroup = 9214EDDA265D3B8F00F01A7C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9214EDD8265D3B8F00F01A7C /* HiFi Place */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9214EDD7265D3B8F00F01A7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9214EDE9265D3B9200F01A7C /* LaunchScreen.storyboard in Resources */,
+				9214EDE6265D3B9200F01A7C /* Assets.xcassets in Resources */,
+				9214EDE4265D3B8F00F01A7C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9214EDD5265D3B8F00F01A7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9214EDE1265D3B8F00F01A7C /* ViewController.swift in Sources */,
+				9214EDDD265D3B8F00F01A7C /* AppDelegate.swift in Sources */,
+				9214EDDF265D3B8F00F01A7C /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9214EDE2265D3B8F00F01A7C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9214EDE3265D3B8F00F01A7C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9214EDE7265D3B9200F01A7C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9214EDE8265D3B9200F01A7C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9214EDEB265D3B9200F01A7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9214EDEC265D3B9200F01A7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9214EDEE265D3B9200F01A7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = EVY2EE44WA;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "HiFi Place/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.highfidelity.HiFi-Place";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9214EDEF265D3B9200F01A7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = EVY2EE44WA;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "HiFi Place/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.highfidelity.HiFi-Place";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9214EDD4265D3B8F00F01A7C /* Build configuration list for PBXProject "HiFi Place" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9214EDEB265D3B9200F01A7C /* Debug */,
+				9214EDEC265D3B9200F01A7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9214EDED265D3B9200F01A7C /* Build configuration list for PBXNativeTarget "HiFi Place" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9214EDEE265D3B9200F01A7C /* Debug */,
+				9214EDEF265D3B9200F01A7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9214EDF3265D43F500F01A7C /* XCRemoteSwiftPackageReference "jwt-kit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vapor/jwt-kit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9214EDF4265D43F500F01A7C /* JWTKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9214EDF3265D43F500F01A7C /* XCRemoteSwiftPackageReference "jwt-kit" */;
+			productName = JWTKit;
+		};
+		9214EDFE265D4A0400F01A7C /* HiFiSpatialAudio */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HiFiSpatialAudio;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 9214EDD1265D3B8F00F01A7C /* Project object */;
+}

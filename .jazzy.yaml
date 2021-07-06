@@ -1,0 +1,20 @@
+readme: README.md
+clean: true
+author: High Fidelity, Inc
+author_url: https://highfidelity.com/
+github_url: https://github.com/highfidelity/hifi-spatial-audio-swift/
+output: docs
+module: HiFiSpatialAudio
+swift_build_tool: xcodebuild
+sdk: iphoneos
+build_tool_arguments:
+  - -scheme
+  - HiFiSpatialAudio
+  - -destination
+  - platform=iOS Simulator,name=iPhone 12
+hide_documentation_coverage: true
+documentation: documentation/*.md
+custom_categories:
+  - name: Getting Started
+    children:
+    - The HiFiCommunicator Class

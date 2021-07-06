@@ -1,0 +1,30 @@
+name: Deploy-New-Release
+
+on:
+  release:
+    types: [released]
+
+jobs:
+  Deploy-New-Release:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Jazzy
+      run: sudo gem install jazzy --no-document
+
+    - name: Generate Jazzy Docs
+      run: jazzy
+
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Publish New Documentation
+      run: npm i aws-sdk && node ./utilities/uploadDocsToS3AndInvalidate.js
+      env:
+        RELEASE_VERSION: ${{ github.event.release.tag_name }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.IAM_SPATIAL_AUDIO_SWIFT_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.IAM_SPATIAL_AUDIO_SWIFT_SECRET }}
+        

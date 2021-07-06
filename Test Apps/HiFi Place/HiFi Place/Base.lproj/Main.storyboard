@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HiFi_Place" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p0v-vG-1Vw">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="799"/>
+                                <color key="backgroundColor" red="0.1529411765" green="0.16862745100000001" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="u7b-JP-thC">
+                                <rect key="frame" x="16" y="815" width="382" height="31"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="7xV-hO-LCW">
+                                        <rect key="frame" x="0.0" y="0.0" width="135.5" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mute Mic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7R4-iR-Zkd">
+                                                <rect key="frame" x="0.0" y="0.0" width="70.5" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qbO-fy-EcK">
+                                                <rect key="frame" x="86.5" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="muteMicSwitchValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="niu-E2-Etc"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="bhF-kV-wrw">
+                                        <rect key="frame" x="176" y="0.0" width="206" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device Orientation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-Qa-l1m">
+                                                <rect key="frame" x="0.0" y="0.0" width="141" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pWb-Me-Hgm">
+                                                <rect key="frame" x="157" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="deviceOrientationSwitchValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="tnH-8k-ljB"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="p0v-vG-1Vw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0ay-Ak-kzN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="u7b-JP-thC" secondAttribute="bottom" constant="16" id="Jha-Xa-3el"/>
+                            <constraint firstItem="u7b-JP-thC" firstAttribute="top" secondItem="p0v-vG-1Vw" secondAttribute="bottom" constant="16" id="PVM-6p-yCT"/>
+                            <constraint firstItem="p0v-vG-1Vw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="a3J-3A-e9v"/>
+                            <constraint firstItem="p0v-vG-1Vw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bh6-zr-0Jt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="u7b-JP-thC" secondAttribute="trailing" constant="16" id="iOO-gr-vgz"/>
+                            <constraint firstItem="u7b-JP-thC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="tTA-8z-J9p"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="deviceOrientationSwitch" destination="pWb-Me-Hgm" id="z70-EG-Luz"/>
+                        <outlet property="deviceOrientationSwitchLabel" destination="hdr-Qa-l1m" id="y8M-h2-XTk"/>
+                        <outlet property="imageView" destination="p0v-vG-1Vw" id="dFV-wJ-Mvv"/>
+                        <outlet property="muteMicSwitch" destination="qbO-fy-EcK" id="k8q-PM-7Tg"/>
+                        <outlet property="muteMicSwitchLabel" destination="7R4-iR-Zkd" id="Rp6-eS-3Yt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="93.75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
