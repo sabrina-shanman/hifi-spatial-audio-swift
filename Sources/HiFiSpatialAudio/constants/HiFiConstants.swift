@@ -29,5 +29,5 @@ public class HiFiConstants {
     /**
         The production port for connections between client and High Fidelity Audio API Server.
     */
-    static public let DEFAULT_SIGNALING_PORT: Int = 8001
+    static public let DEFAULT_SIGNALING_PORT: Int = 443
 }

@@ -213,10 +213,10 @@ public class HiFiCommunicator {
             if (url != nil && url!.host != nil) {
                 webRTCSignalingAddress = "wss://\(String(describing: url!.host)):\(String(describing: url!.port != nil ? url!.port : signalingPort))"
             } else {
-                webRTCSignalingAddress = "wss://\(HiFiConstants.DEFAULT_SIGNALING_HOST_URL):\(HiFiConstants.DEFAULT_SIGNALING_PORT)"
+                webRTCSignalingAddress = "wss://\(signalingHostURL):\(signalingPort)"
             }
             self._mixerSession!.webRTCAddress = "\(webRTCSignalingAddress)?token=\(hifiAuthJWT)"
-            HiFiLogger.log("Using WebRTC Signaling Address: \(webRTCSignalingAddress)<token redacted>")
+            HiFiLogger.log("Using WebRTC Signaling Address: \(webRTCSignalingAddress)?token=<token redacted>")
             
             self._mixerSession!.connect(webRTCSessionParams: self._webRTCSessionParams, customSTUNAndTURNConfig: self._customSTUNAndTURNConfig).then { mixerConnectionResponse in
                 HiFiLogger.log("HiFiCommunicator: Transmitting initial Audio API data to server...")

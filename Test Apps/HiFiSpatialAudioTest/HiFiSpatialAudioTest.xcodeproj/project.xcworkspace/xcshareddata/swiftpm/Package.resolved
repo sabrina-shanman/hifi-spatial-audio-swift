@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/highfidelity/HiFi-WebRTC-iOS.git",
         "state": {
           "branch": "main",
-          "revision": "ad88191e27a2bbfc970854f1e35511842ebba583",
+          "revision": "7723ac3bfa0f23a2872bdfa4484174ca41c02132",
           "version": null
         }
       },
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/vapor/jwt-kit.git",
         "state": {
           "branch": null,
-          "revision": "b50b30b567726b14ac282aa6d3a42a52c1ebc8c0",
-          "version": "4.2.2"
+          "revision": "df7955305940ea0fcd1626a0a6d1a1556623f95e",
+          "version": "4.2.3"
         }
       },
       {
