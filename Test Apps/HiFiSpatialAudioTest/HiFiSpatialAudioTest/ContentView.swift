@@ -258,7 +258,7 @@ class SpatialAudioTestModel : NSObject, CLLocationManagerDelegate, CMHeadphoneMo
 
 struct ContentView: View {
     @ObservedObject var spatialAudioTestModel: SpatialAudioTestModel
-    @State private var possibleHostURLs = ["api-staging.highfidelity.com", "api.highfidelity.com", "api-pro.highfidelity.com"]
+    @State private var possibleHostURLs = ["api-staging.highfidelity.com", "api.highfidelity.com", "api-pro.highfidelity.com", "api-pro-east.highfidelity.com"]
     
     init() {
         spatialAudioTestModel = SpatialAudioTestModel()
