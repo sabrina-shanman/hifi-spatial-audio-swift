@@ -113,10 +113,11 @@ public class HiFiAudioAPIData {
     */
     public var orientationEuler: OrientationEuler3D?
     /**
-        The volume threshold associated with a user. Units are decibels. The scale of this value is the same as that of `ReceivedHiFiAudioAPIData.volumeDecibels`.
+        The volume threshold associated with a user. A volume level below this value is considered background noise and will be smoothly gated off. The floating point value is specified in dBFS (decibels relative to full scale) with values between -96 dB (indicating no gating) and 0 dB (effectively muting the input from this user). By default, there is a global volume threshold (set for a given space), of -40 dB, which applies to all users in a space.
 
-        A volume level below this value is considered background noise and will be smoothly gated off.
-        The floating point value is specified in dBFS (decibels relative to full scale) with values between -96 dB (indicating no gating) and 0 dB (effectively muting the input from this user).
+        Setting this value to `NaN` will cause the volume threshold from the space to be used instead.
+     
+        If you don't supply a `volumeThreshold` when constructing instantiations of this class, the previous value of `volumeThreshold` will be used. If `volumeThreshold` has never been supplied, the volume threshold of the space will be used instead.
     */
     public var volumeThreshold: Float?
     /**
@@ -131,19 +132,17 @@ public class HiFiAudioAPIData {
     */
     public var hiFiGain: Float?
     /**
-        This value affects how far a user's sound will travel in 3D space, without affecting the user's loudness.
-        By default, there is a global attenuation value (set for a given space) that applies to all users in a space. This default space attenuation is usually 0.5, which represents a reasonable approximation of a real-world fall-off in sound over distance.
+        This value affects how far a user's sound will travel in 3D space, without affecting the user's loudness. By default, there is a global attenuation value of 0.5 (set for a given space) that applies to all users in a space. This default represents a reasonable approximation of a real-world fall-off in sound over distance.
         
         Lower numbers represent less attenuation (i.e. sound travels farther); higher numbers represent more attenuation (i.e. sound drops off more quickly).
         
         When setting this value for an individual user, the following holds:
      
-        - Positive numbers should be between 0 and 1, and they represent a logarithmic attenuation. This range is recommended, as sounds more natural.
-        - Smaller numbers represent less attenuation, so a number such as `0.2` can be used to make a particular user's audio travel farther than other users', for instance in "amplified" concert type settings. Similarly, an extremely small non-zero number (e.g. `0.00001`) can be used to effectively turn off attenuation for a given user within a reasonably sized space, resulting in a "broadcast mode" where the user can be heard throughout most of the space regardless of their location relative to other users.
-            - Note: The actual value `0` is used internally to represent the default; for setting minimal attenuation, use small non-zero numbers instead. See also `userRolloff` below.
-        - Negative attenuation numbers are used to represent linear attenuation, and are a somewhat artificial, non-real-world concept. However, this setting can be used as a blunt tool to easily test attenuation, and tune it aggressively in extreme circumstances. When using linear attenuation, the setting is the distance in meters at which the audio becomes totally inaudible.
+        - A value of `NaN` causes the user to inherit the global attenuation for a space, or, if zones are defined for the space, the attenuation settings at the user's position. **COMPATIBILITY WARNING:** Currently, setting `userAttenuation` to 0 will also reset its value to the space/zone default attenuation. In the future, the value of `userAttenuation` will only be reset if it is set to `NaN`. A `userAttenuation` set to 0 will in the future be treated as a "broadcast mode", making the user audible throughout the entire space. If your spatial audio client application is currently resetting `userAttenuation` by setting it to 0, please change it to set `userAttenuation` to `NaN` instead, in order for it to continue working with future versions of High Fidelity's Spatial Audio API.
+        - Positive numbers between 0 and 1 result in logarithmic attenuation of the user. This range is recommended, as it sounds more natural. Smaller positive numbers represent less attenuation. A number such as `0.2` will make a particular user's audio travel farther than other users', suitable for "amplified" concert settings. Similarly, a very small non-zero number (e.g. `0.00001`), for a reasonably sized space, results in a "broadcast mode", where the user can be heard throughout most of the space regardless of their location relative to other users.
+        - Negative numbers result in linear attenuation of the user. Linear attenuation is a somewhat artificial, non-real-world concept. However, it can be used as a blunt tool to easily test attenuation, and tune it aggressively in extreme circumstances. When using linear attenuation, the setting is the distance in meters at which the audio becomes totally inaudible. For example, with a `userAttenuation` of `-12.0`, the user's audio becomes inaudible to other users at 12 meters away.
         
-        If you don't supply an `userAttenuation` when constructing instantiations of this class, `userAttenuation` will be `nil` and the default will be used.
+        If you don't supply a `userAttenuation` when constructing instantiations of this class, the previous value of `userAttenuation` will be used. If `userAttenuation` has never been supplied, the attenuation of the space will be used instead, or, if zone attenuations are defined for a space, the attenuation according to the user's location in the space.
         
         ✔ The client sends `userAttenuation` data to the server when `_transmitHiFiAudioAPIDataToServer()` is called.
         
@@ -151,12 +150,16 @@ public class HiFiAudioAPIData {
      */
     public var userAttenuation: Float?
     /**
-        This value represents the progressive high frequency roll-off in meters, a measure of how the higher frequencies in a user's sound are dampened as the user gets further away. By default, there is a global roll-off value (set for a given space), currently 16 meters, which applies to all users in a space. This value represents the distance for a 1kHz rolloff. Values in the range of 12 to 32 meters provide a more "enclosed" sound, in which high frequencies tend to be dampened over distance as they are in the real world.
+        This value represents the progressive high frequency roll-off in meters, a measure of how the higher frequencies in a user's sound are dampened as the user gets further away. By default, there is a global roll-off value (set for a given space), of 16 meters, which applies to all users in a space. This value represents the distance for a 1kHz rolloff. Values in the range of 12 to 32 meters provide a more "enclosed" sound, in which high frequencies tend to be dampened over distance as they are in the real world.
         
         Generally, you should change roll-off values for the entire space rather than for individual users, but
         extremely high values (e.g. `99999`) may be used in combination with "broadcast mode"-style `userAttenuation` settings to cause the broadcasted voice to sound crisp and "up close" even at very large distances.
+     
+        A `userRolloff` of `NaN` will cause the user to inherit the global frequency rolloff for the space, or, if zones are defined for the space, the frequency rolloff settings at the user's position.
+     
+        **COMPATIBILITY WARNING:** Currently, setting `userRolloff` to 0 will also reset its value to the space/zone default rolloff. In the future, the value of `userRolloff` will only be reset if it is set to `NaN`. A `userRolloff` set to 0 will in the future be treated as a valid frequency rolloff value, which will cause the user's sound to become muffled over a short distance. If your spatial audio client application is currently resetting `userRolloff` by setting it to 0, please change it to set `userRolloff` to `NaN` instead, in order for it to continue working with future versions of High Fidelity's Spatial Audio API.
         
-        If you don't supply an `userRolloff` when constructing instantiations of this class, `userRolloff` will be `nil`.
+        If you don't supply a `userRolloff` when constructing instantiations of this class, the previous value of `userRolloff` will be used. If `userRolloff` has never been supplied, the frequency rolloff of the space will be used instead, or, if zone attenuations are defined for a space, the rolloff according to the user's location in the space.
         
         ✔ The client sends `userRolloff` data to the server when `_transmitHiFiAudioAPIDataToServer()` is called.
         
