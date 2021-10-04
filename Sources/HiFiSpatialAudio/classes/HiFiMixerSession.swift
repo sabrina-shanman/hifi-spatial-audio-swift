@@ -44,7 +44,7 @@ public struct AudionetInitResponse : Encodable {
 }
 
 /// Used internally when formatting user data for the High Fidelity Audio API Server.
-public struct HiFiAudioAPIDataForMixer : Codable {
+public class HiFiAudioAPIDataForMixer : Codable {
     public var x: Double? = nil
     public var y: Double? = nil
     public var z: Double? = nil
@@ -54,15 +54,31 @@ public struct HiFiAudioAPIDataForMixer : Codable {
     public var Y: Double? = nil
     public var Z: Double? = nil
     
-    public var T: Float? = nil
+    public var T: Float? = nil // May be NaN
     public var g: Float? = nil
-    public var a: Float? = nil
-    public var r: Float? = nil
+    public var a: Float? = nil // May be NaN
+    public var r: Float? = nil // May be NaN
     
     public var stringified: String? {
-        let encoder = JSONEncoder()
-        guard let data = try? encoder.encode(self) else { return nil }
-        return String(data: data, encoding: .utf8)
+        var dataDict = [:] as [String: Any]
+        
+        if (self.x != nil) { dataDict["x"] = self.x! }
+        if (self.y != nil) { dataDict["y"] = self.y! }
+        if (self.z != nil) { dataDict["z"] = self.z! }
+        
+        if (self.W != nil) { dataDict["W"] = self.W! }
+        if (self.X != nil) { dataDict["X"] = self.X! }
+        if (self.Y != nil) { dataDict["Y"] = self.Y! }
+        if (self.Z != nil) { dataDict["Z"] = self.Z! }
+        
+        if (self.T != nil) { dataDict["T"] = self.T!.isNaN ? NSNull() : self.T! }
+        if (self.g != nil) { dataDict["g"] = self.g! }
+        if (self.a != nil) { dataDict["a"] = self.a!.isNaN ? NSNull() : self.a! }
+        if (self.r != nil) { dataDict["r"] = self.r!.isNaN ? NSNull() : self.r! }
+        
+        guard let dataDict = try? JSONSerialization.data(withJSONObject: dataDict, options: []) else { return nil }
+        let serializedDict = String.init(bytes: dataDict, encoding: String.Encoding.utf8)
+        return serializedDict
     }
 }
 
@@ -608,7 +624,7 @@ internal class HiFiMixerSession {
             return TransmitHiFiAudioAPIDataStatus(success: false, error: "Can't transmit data to mixer; not connected to mixer.", transmitted: nil)
         }
         
-        var dataForMixer = HiFiAudioAPIDataForMixer()
+        let dataForMixer = HiFiAudioAPIDataForMixer()
         var dataModified: Bool = false
         
         if (currentHiFiAudioAPIData.position != nil) {
@@ -716,7 +732,11 @@ internal class HiFiMixerSession {
         }
         
         if (currentHiFiAudioAPIData.userRolloff != nil) {
-            dataForMixer.r = max(0, currentHiFiAudioAPIData.userRolloff!)
+            if (currentHiFiAudioAPIData.userRolloff!.isNaN) {
+                dataForMixer.r = currentHiFiAudioAPIData.userRolloff!
+            } else {
+                dataForMixer.r = max(0, currentHiFiAudioAPIData.userRolloff!)
+            }
             dataModified = true
         }
         
