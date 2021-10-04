@@ -628,110 +628,142 @@ internal class HiFiMixerSession {
         var dataModified: Bool = false
         
         if (currentHiFiAudioAPIData.position != nil) {
-            var changedComponents = ["x": false, "y": false, "z": false, "changed": false]
+            var anyChanged = false
             if (previousHiFiAudioAPIData != nil && previousHiFiAudioAPIData!.position != nil) {
-                if (currentHiFiAudioAPIData.position!.x != previousHiFiAudioAPIData!.position!.x) {
-                    changedComponents["x"] = true
-                    changedComponents["changed"] = true
-                }
-                if (currentHiFiAudioAPIData.position!.y != previousHiFiAudioAPIData!.position!.y) {
-                    changedComponents["y"] = true
-                    changedComponents["changed"] = true
-                }
-                if (currentHiFiAudioAPIData.position!.z != previousHiFiAudioAPIData!.position!.z) {
-                    changedComponents["z"] = true
-                    changedComponents["changed"] = true
+                if (currentHiFiAudioAPIData.position!.x != previousHiFiAudioAPIData!.position!.x ||
+                    currentHiFiAudioAPIData.position!.y != previousHiFiAudioAPIData!.position!.y ||
+                    currentHiFiAudioAPIData.position!.z != previousHiFiAudioAPIData!.position!.z) {
+                    anyChanged = true
                 }
             } else {
-                changedComponents["x"] = true
-                changedComponents["y"] = true
-                changedComponents["z"] = true
-                changedComponents["changed"] = true
+                anyChanged = true
             }
             
-            if (changedComponents["changed"] == true) {
-                let translatedPosition = HiFiAxisConfiguration.translatePoint3DToMixerSpace(axisConfiguration: ourHiFiAxisConfiguration, inputPoint3D: currentHiFiAudioAPIData.position!)
+            if (anyChanged) {
+                var xChanged = false
+                var yChanged = false
+                var zChanged = false
+                currentHiFiAudioAPIData._transformedPosition = HiFiAxisConfiguration.translatePoint3DToMixerSpace(axisConfiguration: ourHiFiAxisConfiguration, inputPoint3D: currentHiFiAudioAPIData.position!)
+                if (previousHiFiAudioAPIData != nil && previousHiFiAudioAPIData!._transformedPosition != nil) {
+                    if (currentHiFiAudioAPIData._transformedPosition!.x != previousHiFiAudioAPIData!._transformedPosition!.x) {
+                        xChanged = true
+                    }
+                    if (currentHiFiAudioAPIData._transformedPosition!.y != previousHiFiAudioAPIData!._transformedPosition!.y) {
+                        yChanged = true
+                    }
+                    if (currentHiFiAudioAPIData._transformedPosition!.z != previousHiFiAudioAPIData!._transformedPosition!.z) {
+                        zChanged = true
+                    }
+                } else {
+                    xChanged = true
+                    yChanged = true
+                    zChanged = true
+                }
                 
-                if (changedComponents["x"] == true) {
-                    dataForMixer.x = round(translatedPosition.x * 1000)
+                if (xChanged && currentHiFiAudioAPIData._transformedPosition!.x.isFinite) {
+                    dataForMixer.x = round(currentHiFiAudioAPIData._transformedPosition!.x * 1000)
                     dataModified = true
                 }
-                if (changedComponents["y"] == true) {
-                    dataForMixer.y = round(translatedPosition.y * 1000)
+                if (yChanged && currentHiFiAudioAPIData._transformedPosition!.y.isFinite) {
+                    dataForMixer.y = round(currentHiFiAudioAPIData._transformedPosition!.y * 1000)
                     dataModified = true
                 }
-                if (changedComponents["z"] == true) {
-                    dataForMixer.z = round(translatedPosition.z * 1000)
+                if (zChanged && currentHiFiAudioAPIData._transformedPosition!.z.isFinite) {
+                    dataForMixer.z = round(currentHiFiAudioAPIData._transformedPosition!.z * 1000)
                     dataModified = true
                 }
             }
         }
         
         if (currentHiFiAudioAPIData.orientationQuat != nil) {
-            var changedComponents = ["w":false, "x": false, "y": false, "z": false, "changed": false]
+            var anyChanged = false
             if (previousHiFiAudioAPIData != nil && previousHiFiAudioAPIData!.orientationQuat != nil) {
-                if (currentHiFiAudioAPIData.orientationQuat!.w != previousHiFiAudioAPIData?.orientationQuat!.w) {
-                    changedComponents["w"] = true
-                    changedComponents["changed"] = true
-                }
-                if (currentHiFiAudioAPIData.orientationQuat!.x != previousHiFiAudioAPIData?.orientationQuat!.x) {
-                    changedComponents["x"] = true
-                    changedComponents["changed"] = true
-                }
-                if (currentHiFiAudioAPIData.orientationQuat!.y != previousHiFiAudioAPIData?.orientationQuat!.y) {
-                    changedComponents["y"] = true
-                    changedComponents["changed"] = true
-                }
-                if (currentHiFiAudioAPIData.orientationQuat!.z != previousHiFiAudioAPIData?.orientationQuat!.z) {
-                    changedComponents["z"] = true
-                    changedComponents["changed"] = true
+                if (currentHiFiAudioAPIData.orientationQuat!.w != previousHiFiAudioAPIData?.orientationQuat!.w ||
+                    currentHiFiAudioAPIData.orientationQuat!.x != previousHiFiAudioAPIData?.orientationQuat!.x ||
+                    currentHiFiAudioAPIData.orientationQuat!.y != previousHiFiAudioAPIData?.orientationQuat!.y ||
+                    currentHiFiAudioAPIData.orientationQuat!.z != previousHiFiAudioAPIData?.orientationQuat!.z) {
+                    anyChanged = true
                 }
             } else {
-                changedComponents["w"] = true
-                changedComponents["x"] = true
-                changedComponents["y"] = true
-                changedComponents["z"] = true
-                changedComponents["changed"] = true
+                anyChanged = true
             }
             
-            if (changedComponents["changed"] == true) {
-                let translatedOrientation = HiFiAxisConfiguration.translateOrientationQuat3DToMixerSpace(axisConfiguration: ourHiFiAxisConfiguration, inputOrientationQuat3D: currentHiFiAudioAPIData.orientationQuat!)
+            if (anyChanged) {
+                var wChanged = false
+                var xChanged = false
+                var yChanged = false
+                var zChanged = false
+                currentHiFiAudioAPIData._transformedOrientationQuat = HiFiAxisConfiguration.translateOrientationQuat3DToMixerSpace(axisConfiguration: ourHiFiAxisConfiguration, inputOrientationQuat3D: currentHiFiAudioAPIData.orientationQuat!)
+                if (previousHiFiAudioAPIData != nil && previousHiFiAudioAPIData!._transformedOrientationQuat != nil) {
+                    if (currentHiFiAudioAPIData._transformedOrientationQuat!.w != previousHiFiAudioAPIData!._transformedOrientationQuat!.w) {
+                        wChanged = true;
+                    }
+                    if (currentHiFiAudioAPIData._transformedOrientationQuat!.x != previousHiFiAudioAPIData!._transformedOrientationQuat!.x) {
+                        xChanged = true;
+                    }
+                    if (currentHiFiAudioAPIData._transformedOrientationQuat!.y != previousHiFiAudioAPIData!._transformedOrientationQuat!.y) {
+                        yChanged = true;
+                    }
+                    if (currentHiFiAudioAPIData._transformedOrientationQuat!.z != previousHiFiAudioAPIData!._transformedOrientationQuat!.z) {
+                        zChanged = true;
+                    }
+                } else {
+                    wChanged = true
+                    xChanged = true
+                    yChanged = true
+                    zChanged = true
+                }
                 
-                if (changedComponents["w"] == true) {
-                    dataForMixer.W = translatedOrientation.w * 1000
-                    dataModified = true
+                if (wChanged && currentHiFiAudioAPIData._transformedOrientationQuat!.w.isFinite) {
+                    dataForMixer.W = currentHiFiAudioAPIData._transformedOrientationQuat!.w * 1000
                 }
-                if (changedComponents["x"] == true) {
-                    dataForMixer.X = translatedOrientation.x * 1000
-                    dataModified = true
+                if (xChanged && currentHiFiAudioAPIData._transformedOrientationQuat!.x.isFinite) {
+                    dataForMixer.X = currentHiFiAudioAPIData._transformedOrientationQuat!.x * 1000
                 }
-                if (changedComponents["y"] == true) {
-                    dataForMixer.Y = translatedOrientation.y * 1000
-                    dataModified = true
+                if (yChanged && currentHiFiAudioAPIData._transformedOrientationQuat!.y.isFinite) {
+                    dataForMixer.Y = currentHiFiAudioAPIData._transformedOrientationQuat!.y * 1000
                 }
-                if (changedComponents["z"] == true) {
-                    dataForMixer.Z = translatedOrientation.z * 1000
-                    dataModified = true
+                if (zChanged && currentHiFiAudioAPIData._transformedOrientationQuat!.z.isFinite) {
+                    dataForMixer.Z = currentHiFiAudioAPIData._transformedOrientationQuat!.z * 1000
                 }
+                dataModified = true
             }
         }
         
-        if (currentHiFiAudioAPIData.volumeThreshold != nil) {
+        if (currentHiFiAudioAPIData.volumeThreshold != nil &&
+            !currentHiFiAudioAPIData.volumeThreshold!.isInfinite &&
+            (previousHiFiAudioAPIData == nil ||
+                 previousHiFiAudioAPIData!.volumeThreshold == nil ||
+                 currentHiFiAudioAPIData.volumeThreshold != previousHiFiAudioAPIData!.volumeThreshold ||
+                 currentHiFiAudioAPIData.volumeThreshold!.isNaN != previousHiFiAudioAPIData!.volumeThreshold!.isNaN)) {
             dataForMixer.T = currentHiFiAudioAPIData.volumeThreshold!
             dataModified = true
         }
         
-        if (currentHiFiAudioAPIData.hiFiGain != nil) {
+        if (currentHiFiAudioAPIData.hiFiGain != nil &&
+            currentHiFiAudioAPIData.hiFiGain!.isFinite &&
+            (previousHiFiAudioAPIData == nil ||
+                currentHiFiAudioAPIData.hiFiGain != previousHiFiAudioAPIData!.hiFiGain)) {
             dataForMixer.g = currentHiFiAudioAPIData.hiFiGain!
             dataModified = true
         }
         
-        if (currentHiFiAudioAPIData.userAttenuation != nil) {
+        if (currentHiFiAudioAPIData.userAttenuation != nil &&
+            !currentHiFiAudioAPIData.userAttenuation!.isInfinite &&
+            (previousHiFiAudioAPIData == nil ||
+                 previousHiFiAudioAPIData!.userAttenuation == nil ||
+                 currentHiFiAudioAPIData.userAttenuation != previousHiFiAudioAPIData!.userAttenuation ||
+                 currentHiFiAudioAPIData.userAttenuation!.isNaN != previousHiFiAudioAPIData!.userAttenuation!.isNaN)) {
             dataForMixer.a = currentHiFiAudioAPIData.userAttenuation!
             dataModified = true
         }
         
-        if (currentHiFiAudioAPIData.userRolloff != nil) {
+        if (currentHiFiAudioAPIData.userRolloff != nil &&
+            !currentHiFiAudioAPIData.userRolloff!.isInfinite &&
+            (previousHiFiAudioAPIData == nil ||
+                previousHiFiAudioAPIData!.userRolloff == nil ||
+                currentHiFiAudioAPIData.userRolloff != previousHiFiAudioAPIData!.userRolloff ||
+                currentHiFiAudioAPIData.userRolloff!.isNaN != previousHiFiAudioAPIData!.userRolloff!.isNaN)) {
             if (currentHiFiAudioAPIData.userRolloff!.isNaN) {
                 dataForMixer.r = currentHiFiAudioAPIData.userRolloff!
             } else {

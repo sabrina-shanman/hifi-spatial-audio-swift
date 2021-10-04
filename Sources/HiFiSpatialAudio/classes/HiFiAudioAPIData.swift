@@ -171,6 +171,22 @@ public class HiFiAudioAPIData {
         Internally, this variable is used to keep track of which other user gain changes need to be sent to the server. The keys are hashed visit IDs, and the values have units of `HiFiGain`.
     */
     public var _otherUserGainQueue: [String : Int]?
+    /**
+        This is an internal class and it is not recommended for normal usage of the API.
+        
+        See instead `HiFiAudioAPIData.position`, which allows you to set the position for a client.
+        
+        Internally, this variable is used to keep track of when the client's position has changed and needs to be sent to the server.
+    */
+    public var _transformedPosition: Point3D?
+    /**
+        This is an internal class and it is not recommended for normal usage of the API.
+        
+        See instead `HiFiAudioAPIData.orientationQuat`, which allows you to set the orientation for a client.
+        
+        Internally, this variable is used to keep track of when the client's orientation has changed and needs to be sent to the server.
+    */
+    public var _transformedOrientationQuat: OrientationQuat3D?
     
     public init(
         position: Point3D? = nil,

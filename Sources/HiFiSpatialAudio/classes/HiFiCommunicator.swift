@@ -378,6 +378,15 @@ public class HiFiCommunicator {
             self._lastTransmittedHiFiAudioAPIData.position!.y = dataJustTransmitted.position!.y
             self._lastTransmittedHiFiAudioAPIData.position!.z = dataJustTransmitted.position!.z
         }
+        if (dataJustTransmitted._transformedPosition != nil) {
+            if (self._lastTransmittedHiFiAudioAPIData._transformedPosition == nil) {
+                self._lastTransmittedHiFiAudioAPIData._transformedPosition = Point3D()
+            }
+            
+            self._lastTransmittedHiFiAudioAPIData._transformedPosition!.x = dataJustTransmitted._transformedPosition!.x
+            self._lastTransmittedHiFiAudioAPIData._transformedPosition!.y = dataJustTransmitted._transformedPosition!.y
+            self._lastTransmittedHiFiAudioAPIData._transformedPosition!.z = dataJustTransmitted._transformedPosition!.z
+        }
         
         if (dataJustTransmitted.orientationQuat != nil) {
             if (self._lastTransmittedHiFiAudioAPIData.orientationQuat == nil) {
@@ -388,6 +397,16 @@ public class HiFiCommunicator {
             self._lastTransmittedHiFiAudioAPIData.orientationQuat!.x = dataJustTransmitted.orientationQuat!.x
             self._lastTransmittedHiFiAudioAPIData.orientationQuat!.y = dataJustTransmitted.orientationQuat!.y
             self._lastTransmittedHiFiAudioAPIData.orientationQuat!.z = dataJustTransmitted.orientationQuat!.z
+        }
+        if (dataJustTransmitted._transformedOrientationQuat != nil) {
+            if (self._lastTransmittedHiFiAudioAPIData._transformedOrientationQuat == nil) {
+                self._lastTransmittedHiFiAudioAPIData._transformedOrientationQuat = OrientationQuat3D()
+            }
+            
+            self._lastTransmittedHiFiAudioAPIData._transformedOrientationQuat!.w = dataJustTransmitted._transformedOrientationQuat!.w
+            self._lastTransmittedHiFiAudioAPIData._transformedOrientationQuat!.x = dataJustTransmitted._transformedOrientationQuat!.x
+            self._lastTransmittedHiFiAudioAPIData._transformedOrientationQuat!.y = dataJustTransmitted._transformedOrientationQuat!.y
+            self._lastTransmittedHiFiAudioAPIData._transformedOrientationQuat!.z = dataJustTransmitted._transformedOrientationQuat!.z
         }
         
         if (dataJustTransmitted.volumeThreshold != nil) {
