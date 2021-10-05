@@ -241,8 +241,8 @@ public class HiFiCommunicator {
     }
 
     /**
-        Adjusts the gain of another user for this communicator's current connection only. This is a single user version of `HiFiCommunicator.setOtherUserGainsForThisConnection.
-        This can be used to provide a more comfortable listening experience for the client. If you need to perform moderation actions which apply server side, use the <https://docs.highfidelity.com/rest/latest/index.html|Administrative REST API>.
+        Adjusts the gain of another user for this communicator's current connection only. This is a single user version of `HiFiCommunicator.setOtherUserGainsForThisConnection`.
+        This can be used to provide a more comfortable listening experience for the client. If you need to perform moderation actions which apply server side, use the [Administrative REST API](https://docs.highfidelity.com/rest/latest/index.html).
         
         To use this command, the communicator must currently be connected to a space. You can connect to a space using `HiFiCommunicator.connectToHiFiAudioAPIServer`.
         
@@ -250,12 +250,12 @@ public class HiFiCommunicator {
         Use `addUserDataSubscription` `HiFiCommunicator.onUsersDisconnected` to keep track of the hashed visit IDs of currently connected users.
         When you subscribe to user data, you will get a list of `ReceivedHiFiAudioAPIData` objects, which each contain, at minimum, `ReceivedHifiAudioAPIData.hashedVisitID`s and `ReceivedHifiAudioAPIData.providedUserID`s for each user in the space. By inspecting each of these objects, you can associate a user with their hashed visit ID, if you know their provided user ID.
         
-        - Parameter gain: The relative gain to apply to the other user. By default, this is `1.0`. The gain can be any value greater or equal to `0.0`.
+        - Parameter gain: The relative gain to apply to the other user. By default, this is `1.0`. The gain can be any value in the range `0.0` to `10.0`, inclusive.
         For example: a gain of `2.0` will double the loudness of the user, while a gain of `0.5` will halve the user's loudness. A gain of `0.0` will effectively mute the user.
         
         - Returns: A `TransmitHiFiAudioAPIDataStatus` object.
     */
-    @discardableResult public func setOtherUserGainForThisConnection(visitIdHash: String, gain: Int) -> TransmitHiFiAudioAPIDataStatus {
+    @discardableResult public func setOtherUserGainForThisConnection(visitIdHash: String, gain: Float) -> TransmitHiFiAudioAPIDataStatus {
         return self.setOtherUserGainsForThisConnection(map: [visitIdHash : gain])
     }
     
@@ -264,9 +264,11 @@ public class HiFiCommunicator {
 
         - Parameter map: A map of `hashedVisitId`s to `gain`s.
     */
-    @discardableResult public func setOtherUserGainsForThisConnection(map: [String : Int]) -> TransmitHiFiAudioAPIDataStatus {
+    @discardableResult public func setOtherUserGainsForThisConnection(map: [String : Float]) -> TransmitHiFiAudioAPIDataStatus {
+        let MIN_GAIN: Float = 0.0
+        let MAX_GAIN: Float = 10.0
         for (id, gain) in map {
-            self._currentHiFiAudioAPIData._otherUserGainQueue![id] = gain
+            self._currentHiFiAudioAPIData._otherUserGainQueue![id] = min(MAX_GAIN, max(MIN_GAIN, Float(gain)))
         }
         
         return self._transmitHiFiAudioAPIDataToServer()

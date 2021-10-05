@@ -173,7 +173,7 @@ public class HiFiAudioAPIData {
         
         Internally, this variable is used to keep track of which other user gain changes need to be sent to the server. The keys are hashed visit IDs, and the values have units of `HiFiGain`.
     */
-    public var _otherUserGainQueue: [String : Int]?
+    public var _otherUserGainQueue: [String : Float]?
     /**
         This is an internal class and it is not recommended for normal usage of the API.
         
