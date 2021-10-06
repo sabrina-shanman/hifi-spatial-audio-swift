@@ -186,11 +186,10 @@ public class HiFiCommunicator {
         
         To generate a JWT for use with the High Fidelity Audio API:
 
-        1. Head to https://jwt.io/ to find the appropriate library for your langauge.
-            a. For Swift applications, we recommend <https://github.com/vapor/jwt-kit|JWTKit>.
-        2. Using the <https://account.highfidelity.com/dev/account|High Fidelity Audio API Developer Console>,
+        1. Head to https://jwt.io/ to find the appropriate library for your langauge. For Swift applications, we recommend [JWTKit](https://github.com/vapor/jwt-kit).
+        2. Using the [High Fidelity Audio API Developer Console](https://account.highfidelity.com/dev/account)
         obtain your App ID, Space ID, and App Secret.
-        3. Create your user's JWT using the appropriate library, passing your App ID, Space ID, and App Secret. Please reference our <https://www.highfidelity.com/api/guides/misc/getAJWT|"Get a JWT" guide> for additional context.
+        3. Create your user's JWT using the appropriate library, passing your App ID, Space ID, and App Secret. Please reference our ["Get a JWT" guide](https://www.highfidelity.com/api/guides/misc/getAJWT) for additional context.
         4. Pass the created JWT to `connectToHiFiAudioAPIServer()`.
         
         - Parameter signalingHostURL: A URL that will be used to create a valid WebRTC signaling address at High Fidelity. The passed `signalingHostURL` parameter should not contain the protocol
@@ -378,6 +377,15 @@ public class HiFiCommunicator {
             self._lastTransmittedHiFiAudioAPIData.position!.y = dataJustTransmitted.position!.y
             self._lastTransmittedHiFiAudioAPIData.position!.z = dataJustTransmitted.position!.z
         }
+        if (dataJustTransmitted._transformedPosition != nil) {
+            if (self._lastTransmittedHiFiAudioAPIData._transformedPosition == nil) {
+                self._lastTransmittedHiFiAudioAPIData._transformedPosition = Point3D()
+            }
+            
+            self._lastTransmittedHiFiAudioAPIData._transformedPosition!.x = dataJustTransmitted._transformedPosition!.x
+            self._lastTransmittedHiFiAudioAPIData._transformedPosition!.y = dataJustTransmitted._transformedPosition!.y
+            self._lastTransmittedHiFiAudioAPIData._transformedPosition!.z = dataJustTransmitted._transformedPosition!.z
+        }
         
         if (dataJustTransmitted.orientationQuat != nil) {
             if (self._lastTransmittedHiFiAudioAPIData.orientationQuat == nil) {
@@ -388,6 +396,16 @@ public class HiFiCommunicator {
             self._lastTransmittedHiFiAudioAPIData.orientationQuat!.x = dataJustTransmitted.orientationQuat!.x
             self._lastTransmittedHiFiAudioAPIData.orientationQuat!.y = dataJustTransmitted.orientationQuat!.y
             self._lastTransmittedHiFiAudioAPIData.orientationQuat!.z = dataJustTransmitted.orientationQuat!.z
+        }
+        if (dataJustTransmitted._transformedOrientationQuat != nil) {
+            if (self._lastTransmittedHiFiAudioAPIData._transformedOrientationQuat == nil) {
+                self._lastTransmittedHiFiAudioAPIData._transformedOrientationQuat = OrientationQuat3D()
+            }
+            
+            self._lastTransmittedHiFiAudioAPIData._transformedOrientationQuat!.w = dataJustTransmitted._transformedOrientationQuat!.w
+            self._lastTransmittedHiFiAudioAPIData._transformedOrientationQuat!.x = dataJustTransmitted._transformedOrientationQuat!.x
+            self._lastTransmittedHiFiAudioAPIData._transformedOrientationQuat!.y = dataJustTransmitted._transformedOrientationQuat!.y
+            self._lastTransmittedHiFiAudioAPIData._transformedOrientationQuat!.z = dataJustTransmitted._transformedOrientationQuat!.z
         }
         
         if (dataJustTransmitted.volumeThreshold != nil) {
