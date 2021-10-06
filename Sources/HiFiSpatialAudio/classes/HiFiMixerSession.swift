@@ -59,6 +59,8 @@ public class HiFiAudioAPIDataForMixer : Codable {
     public var a: Float? = nil // May be NaN
     public var r: Float? = nil // May be NaN
     
+    public var V: [String: Float]? = nil
+    
     public var stringified: String? {
         var dataDict = [:] as [String: Any]
         
@@ -75,6 +77,8 @@ public class HiFiAudioAPIDataForMixer : Codable {
         if (self.g != nil) { dataDict["g"] = self.g! }
         if (self.a != nil) { dataDict["a"] = self.a!.isNaN ? NSNull() : self.a! }
         if (self.r != nil) { dataDict["r"] = self.r!.isNaN ? NSNull() : self.r! }
+        
+        if (self.V != nil) { dataDict["V"] = self.V! }
         
         guard let dataDict = try? JSONSerialization.data(withJSONObject: dataDict, options: []) else { return nil }
         let serializedDict = String.init(bytes: dataDict, encoding: String.Encoding.utf8)
@@ -770,6 +774,20 @@ internal class HiFiMixerSession {
                 dataForMixer.r = max(0, currentHiFiAudioAPIData.userRolloff!)
             }
             dataModified = true
+        }
+        
+        if (currentHiFiAudioAPIData._otherUserGainQueue != nil) {
+            for (id, gain) in currentHiFiAudioAPIData._otherUserGainQueue! {
+                if (gain.isFinite &&
+                    previousHiFiAudioAPIData?._otherUserGainQueue != nil &&
+                    previousHiFiAudioAPIData!._otherUserGainQueue![id] != gain) {
+                    if (dataForMixer.V == nil) {
+                        dataForMixer.V = [:]
+                    }
+                    dataForMixer.V![id] = gain
+                    dataModified = true
+                }
+            }
         }
         
         if (dataModified == false) {
