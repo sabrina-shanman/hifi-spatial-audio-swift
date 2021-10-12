@@ -135,9 +135,7 @@ public class HiFiCommunicator {
         }
         
         self._currentHiFiAudioAPIData = HiFiAudioAPIData()
-        self._currentHiFiAudioAPIData._otherUserGainQueue = [:]
         self._lastTransmittedHiFiAudioAPIData = HiFiAudioAPIData()
-        self._lastTransmittedHiFiAudioAPIData._otherUserGainQueue = [:]
         
         self._userDataSubscriptions = [UserDataSubscription]()
         
@@ -234,7 +232,6 @@ public class HiFiCommunicator {
         self._inputAudioTrack = nil
         self.onUsersDisconnected = nil
         self._userDataSubscriptions = [UserDataSubscription]()
-        self._currentHiFiAudioAPIData = HiFiAudioAPIData()
         self._lastTransmittedHiFiAudioAPIData = HiFiAudioAPIData()
         
         return self._mixerSession!.disconnect()

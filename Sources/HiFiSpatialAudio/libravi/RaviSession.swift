@@ -426,6 +426,8 @@ internal class RaviWebRTCImplementation : NSObject, RTCPeerConnectionDelegate, R
         HiFiLogger.log("RaviWebRTCImplementation: Closing WebRTC connection...")
         self._rtcConnection!.close()
         
+        self._rtcConnection = nil
+        
 //        RTCAudioSession.sharedInstance().isAudioEnabled = false
 //        do {
 //            try self.avAudioSession.setActive(false)

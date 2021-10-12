@@ -207,6 +207,7 @@ public class HiFiAudioAPIData {
         self.hiFiGain = hiFiGain
         self.userAttenuation = userAttenuation
         self.userRolloff = userRolloff
+        self._otherUserGainQueue = [:]
     }
 }
 
