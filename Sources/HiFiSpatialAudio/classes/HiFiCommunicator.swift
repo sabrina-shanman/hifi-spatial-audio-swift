@@ -232,6 +232,12 @@ public class HiFiCommunicator {
         self._inputAudioTrack = nil
         self.onUsersDisconnected = nil
         self._userDataSubscriptions = [UserDataSubscription]()
+        // When this HiFiCommunicator reconnects to a server, the server knows nothing about the client.
+        // Therefore, clear the history of data sent by the client to the server below, so that
+        // HiFiCommunicator re-sends this data to the server as appropriate.
+        // Do not clear _currentHiFiAudioAPIData, as the client is likely reconnecting to the same server.
+        // Combined with the clearing of history of data sent, this ensures that the client's
+        // current data (position, orientation, etc.) is re-sent to the server upon reconnect.
         self._lastTransmittedHiFiAudioAPIData = HiFiAudioAPIData()
         
         return self._mixerSession!.disconnect()
